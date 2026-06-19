@@ -28,20 +28,20 @@
 
 const QUIZ = {
   // Big heading on the pink title card:
-  title: "Happy Birthday, Sophie! 🎉",
+  title: "Happy Birthday, Sophie!",
 
   // A short welcome line under the title (delete the text for none):
-  intro: "Welcome to your very own SOPH Pub Quiz. 25 questions, one birthday girl — let's see how well you really know us. Good luck! 💛",
+  intro: "Welcome to the Soph July 7th pub quiz. Don't worry it's not Ava Keady writing it this time.",
 
   rounds: [
     /* ---------------------------- ROUND 1 ---------------------------- */
     {
-      title: "Round 1: How We Met",
+      title: "Round 1: Where was...",
       questions: [
         {
-          text: "Where did we first meet?",
+          text: "Where was this picture taken,
           image: "images/placeholder.svg",
-          options: ["At a party", "Through friends", "At work"],
+          options: ["Clover, "Clue", "Crowes"],
           correct: 0,
           explanation: "Replace this with your own memory!"
         },
