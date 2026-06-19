@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The SOPH Friday Pub Quiz</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Top gold banner: the "SOPH" masthead -->
+  <header class="masthead">
+    <p class="logo">SOPH<span>.ie</span></p>
+  </header>
+
+  <!-- Decorative black nav strip (just for the look) -->
+  <nav class="navbar">
+    <span>News</span><span>Movies &amp; TV</span><span>Entertainment</span>
+    <span>Quiz</span><span>Sport</span><span>Life</span>
+  </nav>
+
+  <!-- Sticky running score -->
+  <div class="scorebar" id="scorebar">Score: <b><span id="score">0</span> / <span id="total">0</span></b></div>
+
+  <!-- Central white column -->
+  <main class="column">
+    <section class="title-card">
+      <span class="kicker">Quiz</span>
+      <h1 id="quiz-title"></h1>
+      <p class="intro" id="quiz-intro"></p>
+    </section>
+
+    <div class="quiz" id="quiz"><!-- questions are inserted here by JavaScript --></div>
+
+    <section class="result" id="result" style="display:none">
+      <h2>That's a wrap! 🎉</h2>
+      <div class="big"><span id="final-score">0</span> / <span id="final-total">0</span></div>
+      <p id="result-message"></p>
+    </section>
+  </main>
+
+  <!-- Load the questions, then the renderer -->
+  <script src="questions.js"></script>
+  <script>
+    (function () {
+      var answered = 0;   // how many questions have been answered
+      var score = 0;      // how many were correct
+      var total = 0;      // total number of questions
+
+      // Count total questions up front
+      QUIZ.rounds.forEach(function (r) { total += r.questions.length; });
+
+      // Fill in the title card
+      document.getElementById("quiz-title").textContent = QUIZ.title || "";
+      var introEl = document.getElementById("quiz-intro");
+      if (QUIZ.intro) { introEl.textContent = QUIZ.intro; } else { introEl.style.display = "none"; }
+      document.getElementById("total").textContent = total;
+      document.getElementById("final-total").textContent = total;
+
+      var quizEl = document.getElementById("quiz");
+
+      // Build each round and question
+      QUIZ.rounds.forEach(function (round) {
+        var h = document.createElement("h2");
+        h.className = "round-title";
+        h.textContent = round.title || "";
+        quizEl.appendChild(h);
+
+        round.questions.forEach(function (q) {
+          quizEl.appendChild(buildQuestion(q));
+        });
+      });
+
+      function buildQuestion(q) {
+        var wrap = document.createElement("div");
+        wrap.className = "question";
+
+        // (1) question text
+        var qt = document.createElement("p");
+        qt.className = "q-text";
+        qt.textContent = q.text || "";
+        wrap.appendChild(qt);
+
+        // (2) image (only if one was given)
+        if (q.image) {
+          var img = document.createElement("img");
+          img.className = "q-image";
+          img.src = q.image;
+          img.alt = "";
+          // If the image file is missing, just hide it rather than show a broken icon
+          img.onerror = function () { img.style.display = "none"; };
+          wrap.appendChild(img);
+        }
+
+        // (3) the option bars
+        var opts = document.createElement("div");
+        opts.className = "options";
+
+        // feedback line (hidden until answered)
+        var fb = document.createElement("div");
+        fb.className = "feedback";
+
+        q.options.forEach(function (optText, i) {
+          var btn = document.createElement("button");
+          btn.type = "button";
+          btn.className = "option";
+
+          var box = document.createElement("span");
+          box.className = "box";
+          btn.appendChild(box);
+
+          var label = document.createElement("span");
+          label.textContent = optText;
+          btn.appendChild(label);
+
+          btn.addEventListener("click", function () {
+            handleAnswer(q, i, opts, fb);
+          });
+
+          opts.appendChild(btn);
+        });
+
+        wrap.appendChild(opts);
+        wrap.appendChild(fb);
+        return wrap;
+      }
+
+      function handleAnswer(q, chosenIndex, optsEl, fbEl) {
+        var buttons = optsEl.querySelectorAll(".option");
+        // Already answered? ignore further clicks.
+        if (buttons[0].classList.contains("locked")) { return; }
+
+        var isCorrect = (chosenIndex === q.correct);
+
+        buttons.forEach(function (b, i) {
+          b.classList.add("locked");
+          if (i === q.correct) { b.classList.add("correct"); }      // always show the right one green
+          if (i === chosenIndex) { b.classList.add("chosen"); }     // tick the box she picked
+          if (i === chosenIndex && !isCorrect) { b.classList.add("wrong"); }
+        });
+
+        // Feedback line
+        fbEl.classList.add("show", isCorrect ? "is-correct" : "is-wrong");
+        var verdict = document.createElement("span");
+        verdict.className = "verdict";
+        verdict.textContent = isCorrect ? "Correct! ✅" : "Wrong! ❌";
+        fbEl.appendChild(verdict);
+        if (q.explanation) {
+          var ex = document.createElement("div");
+          ex.className = "explain";
+          ex.textContent = q.explanation;
+          fbEl.appendChild(ex);
+        }
+
+        // Update score
+        if (isCorrect) { score += 1; }
+        answered += 1;
+        document.getElementById("score").textContent = score;
+
+        // When every question is answered, reveal the result card
+        if (answered === total) { showResult(); }
+      }
+
+      function showResult() {
+        var pct = total ? Math.round((score / total) * 100) : 0;
+        var msg;
+        if (pct === 100)      { msg = "A perfect score! You know us inside out. 💛"; }
+        else if (pct >= 70)   { msg = "Brilliant — you really do pay attention. 😍"; }
+        else if (pct >= 40)   { msg = "Not bad at all! A few surprises in there. 😄"; }
+        else                  { msg = "Plenty more memories to make together. 😘"; }
+
+        document.getElementById("final-score").textContent = score;
+        document.getElementById("result-message").textContent = msg;
+        var result = document.getElementById("result");
+        result.style.display = "block";
+        result.scrollIntoView({ behavior: "smooth" });
+      }
+    })();
+  </script>
+</body>
+</html>

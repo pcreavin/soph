@@ -1,0 +1,239 @@
+/* ============================================================
+   SOPH Pub Quiz — styling
+   You normally don't need to edit this file. If you want to
+   tweak the colours, change the values in the :root block below.
+   ============================================================ */
+
+:root {
+  /* --- Brand colours (edit these to recolour the site) --- */
+  --gold:        #ffcc00;   /* top banner */
+  --black:       #111111;   /* nav strip + headings */
+  --magenta:     #c2186a;   /* quiz title card */
+  --magenta-dk:  #8e1250;   /* darker band under the title */
+
+  /* --- Answer feedback colours --- */
+  --option-bg:   #ededed;   /* an un-answered option bar */
+  --correct:     #86d36f;   /* right answer (green) */
+  --wrong:       #ee6e6e;   /* chosen wrong answer (salmon red) */
+  --correct-txt: #2e7d32;   /* "Correct!" text */
+  --wrong-txt:   #c62828;   /* "Wrong!" text */
+
+  --page-bg:     #f2f2f2;   /* behind the white column */
+  --ink:         #1a1a1a;   /* body text */
+  --muted:       #666666;   /* explanations / fine print */
+
+  --column:      680px;     /* width of the central white column */
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--page-bg);
+  color: var(--ink);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ---------- Top banner (the "SOPH" masthead) ---------- */
+.masthead {
+  background: var(--gold);
+  text-align: center;
+  padding: 22px 16px;
+}
+.masthead .logo {
+  font-weight: 800;
+  font-size: clamp(40px, 9vw, 64px);
+  letter-spacing: 2px;
+  color: var(--black);
+  margin: 0;
+  line-height: 1;
+}
+.masthead .logo span { /* the ".ie" bit, a touch lighter */
+  font-weight: 700;
+  opacity: 0.55;
+  font-size: 0.4em;
+  vertical-align: super;
+  letter-spacing: 0;
+}
+
+/* ---------- Black nav strip (decorative) ---------- */
+.navbar {
+  background: var(--black);
+  color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 18px;
+  padding: 11px 12px;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.navbar span { white-space: nowrap; opacity: 0.92; }
+
+/* ---------- Central white column ---------- */
+.column {
+  max-width: var(--column);
+  margin: 0 auto;
+  background: #fff;
+  min-height: 60vh;
+  padding: 0 0 48px;
+}
+
+/* ---------- Magenta title card ---------- */
+.title-card {
+  background: linear-gradient(135deg, var(--magenta), var(--magenta-dk));
+  color: #fff;
+  padding: 34px 26px 26px;
+}
+.title-card .kicker {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.15);
+  padding: 4px 9px;
+  border-radius: 3px;
+  margin-bottom: 14px;
+}
+.title-card h1 {
+  margin: 0;
+  font-size: clamp(28px, 6vw, 40px);
+  font-weight: 800;
+  line-height: 1.12;
+}
+.title-card .intro {
+  margin: 14px 0 0;
+  font-size: 16px;
+  opacity: 0.95;
+  max-width: 46ch;
+}
+
+/* ---------- Quiz body ---------- */
+.quiz { padding: 26px 26px 0; }
+
+.round-title {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--magenta);
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+  margin: 40px 0 8px;
+}
+.round-title:first-child { margin-top: 8px; }
+
+.question { margin: 26px 0 0; }
+.question .q-text {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0 0 14px;
+}
+.question .q-image {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin: 0 0 14px;
+}
+
+/* ---------- Option bars ---------- */
+.options { display: flex; flex-direction: column; gap: 8px; }
+
+.option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+  background: var(--option-bg);
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  padding: 12px 14px;
+  font-size: 16px;
+  font-family: inherit;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.12s ease;
+}
+.option:hover:not(.locked) { background: #e4e4e4; }
+
+/* the little checkbox on the left */
+.option .box {
+  flex: 0 0 auto;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #888;
+  border-radius: 3px;
+  background: #fff;
+  position: relative;
+}
+
+/* states after answering */
+.option.locked { cursor: default; }
+.option.correct { background: var(--correct); border-color: #6cbf54; }
+.option.wrong   { background: var(--wrong);   border-color: #e05656; }
+
+/* checkmark inside the box of the option the user picked */
+.option.chosen .box::after {
+  content: "";
+  position: absolute;
+  left: 4px; top: 0px;
+  width: 5px; height: 10px;
+  border: solid #222;
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
+/* ---------- Feedback line under a question ---------- */
+.feedback {
+  margin: 12px 0 0;
+  font-size: 15px;
+  display: none;            /* shown via .show once answered */
+}
+.feedback.show { display: block; }
+.feedback .verdict { font-weight: 800; }
+.feedback.is-correct .verdict { color: var(--correct-txt); }
+.feedback.is-wrong   .verdict { color: var(--wrong-txt); }
+.feedback .explain { color: var(--muted); margin-top: 2px; }
+
+/* ---------- Sticky running score ---------- */
+.scorebar {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--black);
+  color: #fff;
+  text-align: center;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  padding: 9px 12px;
+}
+.scorebar b { color: var(--gold); }
+
+/* ---------- Final result card ---------- */
+.result {
+  margin: 40px 26px 0;
+  background: linear-gradient(135deg, var(--magenta), var(--magenta-dk));
+  color: #fff;
+  border-radius: 8px;
+  padding: 28px 24px;
+  text-align: center;
+}
+.result h2 { margin: 0 0 6px; font-size: 26px; font-weight: 800; }
+.result .big { font-size: 46px; font-weight: 800; margin: 8px 0; }
+.result p { margin: 6px 0 0; opacity: 0.95; }
+
+/* ---------- Small screens ---------- */
+@media (max-width: 520px) {
+  .title-card, .quiz { padding-left: 18px; padding-right: 18px; }
+  .question .q-text { font-size: 18px; }
+  .navbar { gap: 12px; font-size: 11px; }
+}
