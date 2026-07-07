@@ -32,7 +32,7 @@ const QUIZ = {
         },
         {
           text: "5. You recommended a place for me to go. I wanted to go with you, but ended up going alone while you picked out your thesis. What was the name of this place?",
-          image: "images/q5.HEIC",
+          image: "images/q5.png",
           options: ["Chicago Cultural Center", "The Center for Chicago Heritage", "Illinois Convention Center"],
           correct: 0
         }
@@ -182,7 +182,7 @@ const QUIZ = {
         },
         {
           text: "25. Who do I want to be with forever?",
-          image: "images/q25.HEIC",
+          image: "images/q25.png",
           options: ["Hmm forever is a long time, it would be too keen to pick just one person", "You"],
           correct: 1
         }
