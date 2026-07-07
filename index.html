@@ -164,10 +164,10 @@
       function showResult() {
         var pct = total ? Math.round((score / total) * 100) : 0;
         var msg;
-        if (pct === 100)      { msg = "A perfect score! You know us inside out. 💛"; }
-        else if (pct >= 70)   { msg = "Brilliant — you really do pay attention. 😍"; }
-        else if (pct >= 40)   { msg = "Not bad at all! A few surprises in there. 😄"; }
-        else                  { msg = "Plenty more memories to make together. 😘"; }
+        if (pct === 100)      { msg = "Holy fricken smokes... a perfect score!"; }
+        else if (pct >= 70)   { msg = "Holy smokes you're no stranger to a quiz"; }
+        else if (pct >= 40)   { msg = "La Sambo says 'good job!'"; }
+        else                  { msg = "There's always next Friday"; }
 
         document.getElementById("final-score").textContent = score;
         document.getElementById("result-message").textContent = msg;
