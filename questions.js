@@ -148,7 +148,7 @@ const QUIZ = {
           text: "20. When my dad was talking to Peter and my lecturer at graduation, which of his niche interests did he bring up?",
           image: "images/q20.JPG",
           options: ["Starlink", "Solar Panels", "Money for collecting water bottles"],
-          correct: 2
+          correct: 1
         }
       ]
     },
@@ -183,7 +183,7 @@ const QUIZ = {
         {
           text: "25. Who do I want to be with forever?",
           image: "images/q25.png",
-          options: ["Hmm forever is a long time, it would be too keen to pick just one person", "You"],
+          options: ["Hmm forever is a long time, it would be too keen to pick just one person", "You!"],
           correct: 1
         }
       ]
