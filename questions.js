@@ -1,6 +1,6 @@
 const QUIZ = {
   title: "The SOPH Friday Pub Quiz",
-  intro: "Welcome to your very own SOPH Pub Quiz. 25 questions. No pressure.",
+  intro: "Welcome to your very own SOPH Friday Pub Quiz. Don't worry, Ava Keady didn't write it!",
 
   rounds: [
     {
