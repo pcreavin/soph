@@ -1,212 +1,203 @@
 /* ============================================================================
-   👉 THIS IS THE ONLY FILE YOU NEED TO EDIT 👈
+  SOPH Pub Quiz — replacement questions file
 
-   Replace the questions, options and images below with your own.
-   You do NOT need to touch index.html or style.css.
-
-   HOW EACH QUESTION WORKS
-   -----------------------
-   {
-     text: "Your question goes here?",
-     image: "images/somephoto.jpg",  // OPTIONAL: a picture shown under the question.
-                                      //   - Put the photo file inside the "images" folder.
-                                      //   - Then write its name here, e.g. "images/beach.jpg".
-                                      //   - For NO picture, delete this line (or use image: "").
-     options: ["First choice", "Second choice", "Third choice"],  // exactly 3 options
-     correct: 1,   // which option is right, COUNTING FROM 0:
-                   //   0 = the first option, 1 = the second, 2 = the third
-     explanation: "A little note shown after she answers." // OPTIONAL: delete if not wanted
-   }
-
-   TIPS
-   ----
-   • Keep the commas , and curly braces { } exactly where they are.
-   • Each question is wrapped in { } and separated by a comma.
-   • You can rename the rounds, add or remove questions — there's no strict
-     limit, but the design is built around 25 (5 rounds of 5).
-   ============================================================================ */
+  Images:
+  - Put your 25 numbered images inside the images folder.
+  - This file assumes the names are:
+      images/1.jpg, images/2.jpg, ... images/25.jpg
+  - If your files are PNGs or JPEGs with different extensions, change .jpg below.
+============================================================================ */
 
 const QUIZ = {
-  // Big heading on the pink title card:
-  title: "Happy Birthday, Sophie!",
-
-  // A short welcome line under the title (delete the text for none):
-  intro: "Welcome to the Soph July 7th pub quiz. Don't worry it's not Ava Keady writing it this time.",
+  title: "The SOPH Friday Pub Quiz",
+  intro: "Welcome to your very own SOPH Pub Quiz. 25 questions. No pressure.",
 
   rounds: [
-    /* ---------------------------- ROUND 1 ---------------------------- */
     {
-      title: "Round 1: Where was...",
+      title: "Round 1: Chicago, Snaps & Beach Days",
       questions: [
         {
-          text: "Where was this picture taken,
-          image: "images/placeholder.svg",
-          options: ["Clover, "Clue", "Crowes"],
-          correct: 0,
-          explanation: "Replace this with your own memory!"
+          text: "1. Where was the iconic beach day photo taken?",
+          image: "images/1.jpg",
+          options: ["Clover", "Clue", "Crowes"],
+          correct: 0
         },
         {
-          text: "What was the first thing I said to you?",
-          options: ["“Hi, I'm ...”", "Something embarrassing", "I don't remember!"],
+          text: "2. After not making it into Mother Hubbard's, we went to a different bar to get a drink, which I so kindly paid for. What was the name of this bar?",
+          image: "images/2.jpg",
+          options: ["The Boss Bar", "Parlay River North", "Theory"],
+          correct: 0
+        },
+        {
+          text: "3. Returning the favour, you bought the drinks for the beach day. What flavour were the High Noons?",
+          image: "images/3.jpg",
+          options: ["Watermelon", "Iced Tea", "Pineapple"],
+          correct: 1
+        },
+        {
+          text: "4. To the nearest mile, what is the distance between J1Accom and 2123 West Adams Street?",
+          image: "images/4.jpg",
+          options: ["2 miles", "3 miles", "4 miles"],
+          correct: 1
+        },
+        {
+          text: "5. You recommended a place for me to go. I wanted to go with you, but ended up going alone while you picked out your thesis. What was the name of this place?",
+          image: "images/5.jpg",
+          options: ["Chicago Cultural Center", "The Center for Chicago Heritage", "Illinois Convention Center"],
+          correct: 0
+        }
+      ]
+    },
+
+    {
+      title: "Round 2: Very Specific Memories",
+      questions: [
+        {
+          text: "6. What was the caption of the first snap I sent to you?",
+          image: "images/6.jpg",
+          options: ['"He shaved it off fr"', '"Where did the stache go!?"', '"The stache is gone!"'],
+          correct: 2
+        },
+        {
+          text: "7. How many mutual 5 star films do we have on Letterboxd?",
+          image: "images/7.jpg",
+          options: ["2", "4", "8"],
           correct: 1,
-          explanation: "You can delete the explanation line if you don't want one."
+          explanation: "La La Land, One Flew Over the Cuckoo's Nest, Rear Window, and It's a Wonderful Life."
         },
         {
-          text: "What month did we get together?",
-          options: ["Spring", "Summer", "Winter"],
+          text: "8. When you went to dinner with my family in Galway, what was the name of the restaurant?",
+          image: "images/8.jpg",
+          options: ["Peggy's", "Heneghan's", "Regan's"],
+          correct: 0
+        },
+        {
+          text: "9. In the game Coup, shown to us by Finn, which character's action allowed them to collect 3 coins?",
+          image: "images/9.jpg",
+          options: ["Duke", "Contessa", "Ambassador"],
+          correct: 0
+        },
+        {
+          text: "10. Which one of these streets was Trump Tower on?",
+          image: "images/10.jpg",
+          options: ["N State St", "N Clark St", "N Wabash Ave"],
+          correct: 2
+        }
+      ]
+    },
+
+    {
+      title: "Round 3: Films, Family & Flight Food",
+      questions: [
+        {
+          text: "11. We've watched 11 movies together. Which has the highest average rating on Letterboxd?",
+          image: "images/11.jpg",
+          options: ["Cinema Paradiso", "It's a Wonderful Life", "Fight Club"],
+          correct: 0
+        },
+        {
+          text: "12. Sometimes when I say “Sophie” there's confusion whether I'm talking about you, or my cousin Sophie. Who's older?",
+          image: "images/12.jpg",
+          options: ["You", "Her"],
+          correct: 1
+        },
+        {
+          text: "13. On our flight to Chicago, what flavour was the mousse?",
+          image: "images/13.jpg",
+          options: ["Passionfruit", "Apple Crumble", "Lemon"],
+          correct: 0
+        },
+        {
+          text: "14. At the time of writing, June 28, how many WhatsApp calls have we had in 2026?",
+          image: "images/14.jpg",
+          options: ["75", "90", "105"],
           correct: 2
         },
         {
-          text: "Where did we go on our first date?",
-          image: "images/placeholder.svg",
-          options: ["The cinema", "A restaurant", "A walk"],
+          text: "15. Which town has more pubs, Headford or Blackrock? I am not considering The Clermont or The Brake as pubs.",
+          image: "images/15.jpg",
+          options: ["Headford", "The same", "Blackrock"],
           correct: 1,
-          explanation: "Add a photo by dropping it in the images folder."
-        },
-        {
-          text: "Who said 'I love you' first?",
-          options: ["Me", "You", "We said it together"],
-          correct: 0
+          explanation: "Blackrock: Bayview Tavern, The Stone House, Uncle Tom's Cabin, and The Nep. Headford: Tav, Teds, Varleys, Tatch."
         }
       ]
     },
 
-    /* ---------------------------- ROUND 2 ---------------------------- */
     {
-      title: "Round 2: All About You",
+      title: "Round 4: Paris, Coffee & Statues",
       questions: [
         {
-          text: "What's your go-to coffee order?",
-          options: ["Flat white", "Cappuccino", "Just tea, thanks"],
-          correct: 0
-        },
-        {
-          text: "What's your favourite film of all time?",
-          options: ["Film A", "Film B", "Film C"],
-          correct: 1
-        },
-        {
-          text: "What's your dream holiday destination?",
-          image: "images/placeholder.svg",
-          options: ["Japan", "Italy", "The Maldives"],
+          text: "16. We're going to a restaurant called Alliance in Paris for dinner. How many Michelin Stars does it have?",
+          image: "images/16.jpg",
+          options: ["0", "1", "2"],
           correct: 2
         },
         {
-          text: "What's your hidden talent?",
-          options: ["Talent A", "Talent B", "Talent C"],
+          text: "17. Which of these is NOT a real review for Jelly Bean Garden?",
+          image: "images/17.jpg",
+          options: [
+            'NOT "The Bean" 😂 Mistook this park as the iconic Bean statue or Cloud Gate. Made for a very hilarious trip with a surprise realization',
+            "What started as an effort to improve the neighborhood has sadly fallen into the same state as everything around it. The garden feels neglected, with little maintenance and a lot of missed potential.",
+            "Ghetto dump. That said no need to visit."
+          ],
+          correct: 1
+        },
+        {
+          text: "18. Who is in the statue in Cong that you so rudely jumped on?",
+          image: "images/18.jpg",
+          options: ["John Wayne and Grace Kelly", "Clark Gable and Grace Kelly", "John Wayne and Maureen O'Hara"],
+          correct: 2
+        },
+        {
+          text: "19. Where is the best coffee in Dublin?",
+          image: "images/19.jpg",
+          options: ["All Rosey", "Coffee gets to the stage where all good coffee tastes the same", "Pi"],
           correct: 0
         },
         {
-          text: "What's your favourite way to spend a Sunday?",
-          options: ["A lie-in and brunch", "A big walk", "On the sofa with a film"],
-          correct: 0
+          text: "20. When my dad was talking to Peter and my lecturer at graduation, which of his niche interests did he bring up?",
+          image: "images/20.jpg",
+          options: ["Starlink", "Solar Panels", "Money for collecting water bottles"],
+          correct: 2
         }
       ]
     },
 
-    /* ---------------------------- ROUND 3 ---------------------------- */
     {
-      title: "Round 3: Picture Round 📸",
+      title: "Round 5: The Important Stuff",
       questions: [
         {
-          text: "Where were we when this photo was taken?",
-          image: "images/placeholder.svg",
-          options: ["The seaside", "The city", "The mountains"],
-          correct: 0,
-          explanation: "Swap images/placeholder.svg for a real photo from this trip."
-        },
-        {
-          text: "What were we celebrating here?",
-          image: "images/placeholder.svg",
-          options: ["A birthday", "An anniversary", "Just because"],
+          text: "21. In our first, of many, runs together, we ran a whopping 2.07km. This was a very significant achievement. What was our pace?",
+          image: "images/21.jpg",
+          options: ["5:15 /km", "5:42 /km", "6:01 /km"],
           correct: 1
         },
         {
-          text: "Whose house was this at?",
-          image: "images/placeholder.svg",
-          options: ["Mine", "Yours", "A friend's"],
+          text: "22. Which of these people have NOT written a JOE Friday Pub Quiz? Bonus point: which person in the image is Ava Keady?",
+          image: "images/22.jpg",
+          options: ["Ava Keady (booooo)", "Charlie Herbert", "Ryan Carrick"],
           correct: 2
         },
         {
-          text: "What year was this?",
-          image: "images/placeholder.svg",
-          options: ["2023", "2024", "2025"],
+          text: "23. After the baseball, someone was so sure that we would end up together, or wanted to haunt me if we didn't, that they scheduled an email to me on Christmas Day of the two of us. Who?",
+          image: "images/23.jpg",
+          options: ["Oisín", "Ivan", "Jack O'Brien"],
+          correct: 0
+        },
+        {
+          text: "24. Who broke Rory's chair?",
+          image: "images/24.jpg",
+          options: ["Ivan, Jack King, Aoife", "Me, Ivan, Aoife", "Me, Jack King, Ivan"],
           correct: 1
         },
         {
-          text: "What did we do right after this photo?",
-          image: "images/placeholder.svg",
-          options: ["Got food", "Went dancing", "Went home to sleep"],
-          correct: 0
-        }
-      ]
-    },
-
-    /* ---------------------------- ROUND 4 ---------------------------- */
-    {
-      title: "Round 4: Us as a Couple",
-      questions: [
-        {
-          text: "What's 'our song'?",
-          options: ["Song A", "Song B", "Song C"],
-          correct: 0
-        },
-        {
-          text: "What's our most-watched TV show together?",
-          options: ["Show A", "Show B", "Show C"],
+          text: "25. Who do I want to be with forever?",
+          image: "images/25.jpg",
+          options: ["Hmm forever is a long time, it would be too keen to pick just one person", "You"],
           correct: 1
-        },
-        {
-          text: "What's the best trip we've taken together?",
-          image: "images/placeholder.svg",
-          options: ["Trip A", "Trip B", "Trip C"],
-          correct: 2
-        },
-        {
-          text: "What's our favourite takeaway?",
-          options: ["Pizza", "Chinese", "Indian"],
-          correct: 0
-        },
-        {
-          text: "What do we argue about most (lovingly)?",
-          options: ["The thermostat", "What to watch", "Who's driving"],
-          correct: 1
-        }
-      ]
-    },
-
-    /* ---------------------------- ROUND 5 ---------------------------- */
-    {
-      title: "Round 5: The Future",
-      questions: [
-        {
-          text: "Where do we most want to travel next?",
-          image: "images/placeholder.svg",
-          options: ["Somewhere sunny", "Somewhere snowy", "A city break"],
-          correct: 0
-        },
-        {
-          text: "What's first on our someday bucket list?",
-          options: ["A roadtrip", "Learn to cook properly", "See the Northern Lights"],
-          correct: 2
-        },
-        {
-          text: "What pet should we get one day?",
-          options: ["A dog", "A cat", "Absolutely none"],
-          correct: 0
-        },
-        {
-          text: "What's our shared goal for this year?",
-          options: ["Goal A", "Goal B", "Goal C"],
-          correct: 1
-        },
-        {
-          text: "Finish the sentence: the best is...",
-          options: ["...behind us", "...right now", "...yet to come"],
-          correct: 2,
-          explanation: "Happy birthday — I love you. 💛"
         }
       ]
     }
   ]
 };
+
