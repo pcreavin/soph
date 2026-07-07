@@ -26,7 +26,7 @@ const QUIZ = {
         },
         {
           text: "4. To the nearest mile, what is the distance between J1Accom and 2123 West Adams Street?",
-          image: "images/q4",
+          image: "images/q4.png",
           options: ["2 miles", "3 miles", "4 miles"],
           correct: 1
         },
